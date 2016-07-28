@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>mapui.js</title>
+
+<link rel="stylesheet" href="mapui.css">
+<style>
+.container {
+	margin: 0 auto;
+	padding: 0 15px;
+	max-width: 800px;
+}
+.demoSection {
+	margin: 50px 0;
+	padding: 15px;
+	background: #f9f9f9;
+}
+.demoSection h2 {
+	margin: 0 0 1em;
+	padding: 0 0 5px;
+	border-bottom: 1px solid #ccc;
+	font-size: 120%;
+}
+
+.demoSection pre {
+	display: block;
+	padding: 10px;
+	background: #000;
+	color: #fff;
+	font-size: 11px;
+	font-family: monospace;
+	overflow-x: scroll;
+}
+
+input[type="text"] {
+	width: 100ex;
+}
+
+.previewmap {
+	display: block;
+	margin: 5px 0 0;
+	border: 2px solid #eee;
+	width: 240px;
+	height: 120px;
+}
+.previewmap:empty {
+	display: none;
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbM2sfNcxrJDzXL5B8CPsEnGW9Pn6ji3g"></script>
+<script src="mapui.js"></script>
+<script>
+$(function(){
+	$('.demoSection').each(function(){
+		var html = $(this).html();
+		html = html.replace(/^\n+/gm, '').replace(/\n+$/, ''); // 前後の改行を削除
+		html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+		$(this).append( $('<pre>').html(html) );
+	});
+});
+</script>
+
+</head>
+<body>
+<div class="container">
+
+<h1>mapui.js</h1>
+<p>Version 0.5</p>
+<ul>
+	<li>Version 0.5</li>
+	<li>緯度経度を入力するためのGoogle Maps APIをベースにしたJavascriptのライブラリです</li>
+	<li>Google Maps JavaScript API, Google Maps Geocoding APIが使用可能である必要があります</li>
+	<li>なおデモのプレビュー地図は Google Static Maps API を使用しています</li>
+	<li>jQuery等の他のJavascriptライブラリには依存してません（このデモではjQueryを使ってます）</li>
+</ul>
+
+<h2>Support</h2>
+<ul>
+	<li>iOS Safari 6+</li>
+	<li>Android Browser 4+</li>
+	<li>Chrome for Android</li>
+	<li>Internet Explorer 9+</li>
+	<li>Chrome</li>
+	<li>Firefox</li>
+	<li>Safari</li>
+</ul>
+
+<section class="demoSection">
+	<h2>simple</h2>
+	<p><button id="demo0-btn">open mapui</button></p>
+	<script>
+	$('#demo0-btn').on('click', function(){
+		mapui.open();
+	});
+	</script>
+</section>
+
+<section class="demoSection">
+	<h2>callback</h2>
+	<p><button id="demo1-btn">open mapui</button></p>
+	<script>
+	$('#demo1-btn').on('click', function(){
+		mapui.open(function(lat, lng, zoom){
+			alert(lat + ',' + lng);
+		});
+	});
+	</script>
+</section>
+
+<section class="demoSection">
+	<h2>set default lat, lng, zoom</h2>
+	<p><button id="demo2-btn">open mapui</button></p>
+	<script>
+	$('#demo2-btn').on('click', function(){
+		mapui.open(35.3605271, 138.6577376, 12, function(lat, lng, zoom){
+			alert(lat + ',' + lng);
+		});
+	});
+	</script>
+</section>
+
+<section class="demoSection">
+	<h2>set map options</h2>
+	<p><button id="demo3-btn">open mapui</button></p>
+	<script>
+	$('#demo3-btn').on('click', function(){
+		mapui.open(35.3605271, 138.6577376, 12, function(lat, lng, zoom){
+			alert(lat + ',' + lng);
+		}, {
+			mapTypeId: google.maps.MapTypeId.TERRAIN,
+			mapTypeControl: true,
+			streetViewControl: true,
+		});
+	});
+	</script>
+</section>
+
+<section class="demoSection">
+	<h2>API submit / close</h2>
+	<p><button id="demo4-btn">open mapui</button> <span id="demo4-output"></span></p>
+	<script>
+	$('#demo4-btn').on('click', function(){
+		var timer = setTimeout(function(){
+			if ( confirm('Timeover... ok?') ) {
+				mapui.submit();
+			} else {
+				mapui.close();
+			}
+		}, 2000);
+		mapui.open(function(lat, lng, zoom){
+			$('#demo4-output').text(lat + ',' + lng);
+		});
+	});
+	</script>
+</section>
+
+<section class="demoSection">
+	<h2>input</h2>
+	<p><input type="text" id="demo5-input" value="" placeholder="input latitude and longitude"></p>
+	<script>
+	mapui.input('#demo5-input');
+	</script>
+</section>
+
+<section class="demoSection">
+	<h2>input with options</h2>
+	<p><input type="text" id="demo6-input" value="" placeholder="input latitude and longitude"></p>
+	<script>
+	mapui.input('#demo6-input', 35.3605271, 138.6577376, 10, {
+		mapTypeId: google.maps.MapTypeId.TERRAIN,
+	});
+	</script>
+</section>
+
+
+<section class="demoSection">
+	<h2>separated input</h2>
+	<p>
+		<input type="text" id="demo7-input-lat" value="" placeholder="latitude">
+		<input type="text" id="demo7-input-lng" value="" placeholder="longitude">
+	</p>
+	<script>
+	mapui.input(['#demo7-input-lat', '#demo6-input-lng']);
+	</script>
+</section>
+
+<section class="demoSection">
+	<h2>input with preview map</h2>
+	<p>
+		<label>
+			<input type="text" id="demo8-input" value="35.68956580000001,139.70030880000013" placeholder="input latitude and longitude">
+			<span class="previewmap" id="demo8-previewmap"></span>
+		</label>
+	</p>
+	<script>
+	mapui.input('#demo8-input', function(){
+		updateDemo8();
+	});
+	function updateDemo8(){
+		var latlng = $('#demo8-input').val();
+		$('#demo8-previewmap').empty();
+		if ( latlng ) {
+			$('#demo8-previewmap').html('<img src="https://maps.googleapis.com/maps/api/staticmap?size=240x120&key=AIzaSyCbM2sfNcxrJDzXL5B8CPsEnGW9Pn6ji3g&markers=' + latlng + '">');
+		}
+	}
+	updateDemo8();
+	</script>
+</section>
+
+<section class="demoSection">
+	<h2>input with preview map, empty button</h2>
+	<p>
+		<label>
+			<input type="text" id="demo9-input" value="34.803479700000025,138.2554884" placeholder="input latitude and longitude">
+			<span class="previewmap" id="demo9-previewmap"></span>
+		</label>
+		<button type="button" id="demo9-removeBtn">この位置を削除</button>
+	</p>
+	<script>
+	mapui.input('#demo9-input', function(){
+		updateDemo9();
+	});
+	$('#demo9-removeBtn').on('click', function(){
+		$('#demo9-input').val('');
+		updateDemo9();
+	});
+	function updateDemo9(){
+		var latlng = $('#demo9-input').val();
+		if ( latlng ) {
+			$('#demo9-previewmap').html('<img src="https://maps.googleapis.com/maps/api/staticmap?size=240x120&key=AIzaSyCbM2sfNcxrJDzXL5B8CPsEnGW9Pn6ji3g&markers=' + latlng + '">');
+			$('#demo9-removeBtn').show();
+		} else {
+			$('#demo9-previewmap').empty();
+			$('#demo9-removeBtn').hide();
+		}
+	}
+	updateDemo9();
+	</script>
+</section>
+
+</div>
+</body>
+</html>
+
