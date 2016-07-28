@@ -1,0 +1,282 @@
+.mapui-root {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.mapui-overlay {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: rgba(0,0,0,.6);
+}
+.mapui-box {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	margin: auto;
+	border: 10px solid #fff;
+	width: 90%;
+	max-width: 600px;
+	height: 90%;
+	max-height: 600px;
+	max-width: 600px;
+	background: #fff;
+	box-shadow: 0 0 5px rgba(0,0,0,.2);
+	line-height: 1.5;
+	font-size: 13px;
+}
+
+.mapui-box-header {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	/*height: 25px;*/
+}
+.mapui-box-header::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.mapui-box-closebtn {
+	-webkit-appearance: none;
+	appearance: none;
+	display: block;
+	position: relative;
+	float: right;
+	margin: -5px -5px 0 10px;
+	border: none;
+	padding: 0;
+	width: 30px;
+	height: 30px;
+	background: none;
+	cursor: pointer;
+	outline: none;
+}
+.mapui-box-closebtn::before,
+.mapui-box-closebtn::after {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -1px;
+	width: 30px;
+	height: 2px;
+	background: #999;
+}
+.mapui-box-closebtn::before {
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.mapui-box-closebtn::after {
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.mapui-box-search {
+	overflow: hidden;
+	border-bottom: 1px solid #ccc;
+}
+.mapui-box-search-btn {
+	-webkit-appearance: none;
+	appearance: none;
+	display: block;
+	position: relative;
+	float: left;
+	margin: 0;
+	border: none;
+	padding: 0;
+	width: 22px;
+	height: 24px;
+	line-height: 24px;
+	background: none;
+	text-align: left;
+	font-size: 13px;
+	outline: none;
+}
+.mapui-box-search-btn::before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 3px;
+	top: 7px;
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+	background: #555;
+}
+.mapui-box-search-btn::after {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 8px;
+	top: 11px;
+	width: 10px;
+	height: 2px;
+	background: #555;
+	-webkit-transform-origin: 0% 50%;
+	transform-origin: 0% 50%;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.mapui-box-search-inputwrap {
+	display: block;
+	overflow: hidden;
+}
+.mapui-box-search-input {
+	-webkit-appearance: none;
+	appearance: none;
+	display: block;
+	box-sizing: border-box;
+	margin: 0;
+	border: none;
+	padding: 0;
+	width: 100%;
+	height: 24px;
+	background: no-repeat;
+	line-height: 24px;
+	font-size: 13px;
+	outline: none;
+}
+
+.mapui-box-body {
+	position: absolute;
+	top: 35px;
+	bottom: 70px;
+	left: 0;
+	right: 0;
+	background: #fafafa;
+}
+
+.mapui-box-map {
+	width: 100%;
+	height: 100%;
+}
+
+.mapui-box-center {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 0;
+	height: 0;
+	opacity: .6;
+	pointer-events: none;
+}
+.mapui-box-center::before,
+.mapui-box-center::after {
+	content: "";
+	display: block;
+	position: absolute;
+	outline: 1px solid #fff;
+}
+.mapui-box-center::before {
+	border-top: 1px solid #000;
+	margin-left: -50px;
+	width: 100px;
+}
+.mapui-box-center::after {
+	border-left: 1px solid #000;
+	margin-top: -50px;
+	height: 100px;
+}
+
+.mapui-box-footer {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.mapui-box-latlng {
+	padding-bottom: 5px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 11px;
+	overflow: hidden;
+}
+.mapui-box-latlng-lat,
+.mapui-box-latlng-lng {
+	float: left;
+	box-sizing: border-box;
+	width: 50%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.mapui-box-latlng-lat {text-align: right;}
+.mapui-box-latlng-lng {text-align: left;}
+.mapui-box-latlng-lat::after {content: " "; margin-left: 2px;}
+.mapui-box-latlng-lng::before {content: ","; margin-right: 2px;}
+
+.mapui-box-submitbtn {
+	-webkit-appearance: none;
+	appearance: none;
+	display: block;
+	box-sizing: border-box;
+	margin: 0;
+	border: none;
+	width: 100%;
+	padding: 0 .7em;
+	height: 36px;
+	background: #666;
+	line-height: 36px;
+	text-align: center;
+	font-size: 13px;
+	color: #fff;
+	outline: none;
+	cursor: pointer;
+}
+
+
+.mapui-box-preview {
+	display: inline-block;
+	position: relative;
+	max-width: 100%;
+}
+.mapui-box-preview-map {
+	max-width: 100%;
+	height: auto;
+} 
+
+.mapui-btn {
+	display: inline-block;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	padding: 2px 6px 3px;
+	max-width: 100%;
+	background: #fff;
+	border-radius: 2px;
+	font-size: 11px;
+	cursor: pointer;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.mapui-btn-edit {
+	font-weight: bold;
+}
+.mapui-btn-lat,
+.mapui-btn-lng {
+}
+.mapui-btn-comma {
+}
+
+.mapui-btn-map {
+	display: block;
+	margin: 5px auto 0;
+	max-width: 100%;
+	height: auto;
+}
+
