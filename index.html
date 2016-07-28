@@ -55,9 +55,9 @@ input[type="text"] {
 <script src="mapui.js"></script>
 <script>
 $(function(){
-	$('.demoSection').each(function(){
+	$('.autoCode').each(function(){
 		var html = $(this).html();
-		html = html.replace(/^\n+/gm, '').replace(/\n+$/, ''); // 前後の改行を削除
+		html = html.replace(/^\n+/gm, '').replace(/\n+$/, '');
 		html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 		$(this).append( $('<pre>').html(html) );
 	});
@@ -71,12 +71,14 @@ $(function(){
 <h1>mapui.js</h1>
 <p>Version 0.5</p>
 <ul>
-	<li>Version 0.5</li>
 	<li>緯度経度を入力するためのGoogle Maps APIをベースにしたJavascriptのライブラリです</li>
 	<li>Google Maps JavaScript API, Google Maps Geocoding APIが使用可能である必要があります</li>
 	<li>なおデモのプレビュー地図は Google Static Maps API を使用しています</li>
 	<li>jQuery等の他のJavascriptライブラリには依存してません（このデモではjQueryを使ってます）</li>
 </ul>
+
+<h2>Download</h2>
+<p><a href="https://github.com/ksk1015/mapui">https://github.com/ksk1015/mapui</a></p>
 
 <h2>Support</h2>
 <ul>
@@ -90,6 +92,14 @@ $(function(){
 </ul>
 
 <section class="demoSection">
+	<h2>at first</h2>
+	<p>load Google Maps JavaScript API, mapui.css, mapui.js</p>
+	<pre>&lt;link rel="stylesheet" href="mapui.css"&gt;
+&lt;script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"&gt;&lt;/script&gt;
+&lt;script src="mapui.js"&gt;&lt;/script&gt;</pre>
+</section>
+
+<section class="demoSection autoCode">
 	<h2>simple</h2>
 	<p><button id="demo0-btn">open mapui</button></p>
 	<script>
@@ -99,7 +109,7 @@ $(function(){
 	</script>
 </section>
 
-<section class="demoSection">
+<section class="demoSection autoCode">
 	<h2>callback</h2>
 	<p><button id="demo1-btn">open mapui</button></p>
 	<script>
@@ -111,7 +121,7 @@ $(function(){
 	</script>
 </section>
 
-<section class="demoSection">
+<section class="demoSection autoCode">
 	<h2>set default lat, lng, zoom</h2>
 	<p><button id="demo2-btn">open mapui</button></p>
 	<script>
@@ -123,7 +133,7 @@ $(function(){
 	</script>
 </section>
 
-<section class="demoSection">
+<section class="demoSection autoCode">
 	<h2>set map options</h2>
 	<p><button id="demo3-btn">open mapui</button></p>
 	<script>
@@ -139,7 +149,7 @@ $(function(){
 	</script>
 </section>
 
-<section class="demoSection">
+<section class="demoSection autoCode">
 	<h2>API submit / close</h2>
 	<p><button id="demo4-btn">open mapui</button> <span id="demo4-output"></span></p>
 	<script>
@@ -158,7 +168,7 @@ $(function(){
 	</script>
 </section>
 
-<section class="demoSection">
+<section class="demoSection autoCode">
 	<h2>input</h2>
 	<p><input type="text" id="demo5-input" value="" placeholder="input latitude and longitude"></p>
 	<script>
@@ -166,7 +176,7 @@ $(function(){
 	</script>
 </section>
 
-<section class="demoSection">
+<section class="demoSection autoCode">
 	<h2>input with options</h2>
 	<p><input type="text" id="demo6-input" value="" placeholder="input latitude and longitude"></p>
 	<script>
@@ -177,7 +187,7 @@ $(function(){
 </section>
 
 
-<section class="demoSection">
+<section class="demoSection autoCode">
 	<h2>separated input</h2>
 	<p>
 		<input type="text" id="demo7-input-lat" value="" placeholder="latitude">
@@ -188,7 +198,7 @@ $(function(){
 	</script>
 </section>
 
-<section class="demoSection">
+<section class="demoSection autoCode">
 	<h2>input with preview map</h2>
 	<p>
 		<label>
@@ -211,7 +221,7 @@ $(function(){
 	</script>
 </section>
 
-<section class="demoSection">
+<section class="demoSection autoCode">
 	<h2>input with preview map, empty button</h2>
 	<p>
 		<label>
