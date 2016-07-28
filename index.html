@@ -35,7 +35,9 @@
 }
 
 input[type="text"] {
+	padding: 0 .2em;
 	width: 100ex;
+	height: 2em;
 }
 
 .previewmap {
@@ -91,6 +93,8 @@ $(function(){
 	<li>Safari</li>
 </ul>
 
+<h2>Get started</h2>
+
 <section class="demoSection">
 	<h2>at first</h2>
 	<p>load Google Maps JavaScript API, mapui.css, mapui.js</p>
@@ -98,6 +102,15 @@ $(function(){
 &lt;script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"&gt;&lt;/script&gt;
 &lt;script src="mapui.js"&gt;&lt;/script&gt;</pre>
 </section>
+
+<section class="demoSection autoCode">
+	<h2>Forcus input!!</h2>
+	<p><input type="text" id="demo-input" value="" placeholder="input latitude and longitude"></p>
+	<script>mapui.input('#demo-input');</script>
+</section>
+
+
+<h2>Demo</h2>
 
 <section class="demoSection autoCode">
 	<h2>simple</h2>
